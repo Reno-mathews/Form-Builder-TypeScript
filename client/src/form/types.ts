@@ -12,7 +12,7 @@ export type NumberField = BaseField & {
     min?: number;
 };
 
-export type SelectField<T extends readonly string[]> BaseField & {
+export type SelectField<T extends readonly string[]> = BaseField & {
     type: "select";
     options: T;
 };
