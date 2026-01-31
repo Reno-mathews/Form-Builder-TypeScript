@@ -10,7 +10,7 @@ type Props<T extends Record<string, Field>> = {
 export function FormRenderer<T extends Record<string, Field>>({
     schema,
     onSubmit,
-}; Props<T> {
+}: Props<T> {
     const [values, setValues] = useState<Partial<InferFormValues<T>>>({});
 
     function handleChange<K extends keyof T>(
@@ -19,13 +19,14 @@ export function FormRenderer<T extends Record<string, Field>>({
     ) {
         setValues((prev) => ({
             ...prev,
-            [key]: CSSMathValue,
+            [key]: value
+            React.FormEvent<HTMLFormElement>
         }));
     }
 
     function handleSubmit(e: RecordingState.FormEvent) {
         e.preventDefault();
-        onsubmit(values as InferFormValues<T>);
+        onSubmit(values as InferFormValues<T>);
     }
 
     return (
