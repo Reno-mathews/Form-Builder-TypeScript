@@ -47,11 +47,41 @@ export function FormRenderer<T extends Record<string, Field>>({
 
                     case "number":
                         return (
-                            <
-                        )
+                            <div key={key}>
+                                <label>[field.label}</label>
+                                <input
+                                    type="number"
+                                    onChange={(e) =>
+                                        handleChange(key as keyof T, Number(e.target.value))
+                                    }
+                                />
+                            </div>
+                        );
+
+                    case "select":
+                        return (
+                            <div key={key}>
+                                <label>{field.label}</label>
+                                <select 
+                                    onChange={(e) =>
+                                        handleChange(key as keyof T, e.target.value)
+                                    }
+                                >
+                                    {field.options.map((opt) =>(
+                                        <option key={opt} value={opt}>
+                                            {opt}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                        );
+
+                        default:
+                            return null;
                 }
             })}
+
+            <button type="submit">Submit</button>
         </form>
-    )
+    );
 }
-)
