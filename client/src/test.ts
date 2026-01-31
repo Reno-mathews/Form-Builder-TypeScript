@@ -1,4 +1,5 @@
-import { defineForm, InferFormValues } from "./form/defineForm";
+import { defineForm } from "./form/defineForm";
+import type { InferFormValues } from "./form/defineForm";
 
 const userForm = defineForm({
     name: {
@@ -23,5 +24,5 @@ type UserFormValues = InferFormValues<typeof userForm>;
 const example: UserFormValues = {
     name: "Alice",
     age: 25,
-    role: "superuser",
+    role: "admin",
 };
