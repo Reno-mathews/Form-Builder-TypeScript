@@ -38,8 +38,16 @@ export function FormRenderer<T extends Record<string, Field>>({
                                 <label>{field.label}</label>
                                 <input
                                     type="text"
-                                    onChange={(e) => handleChange()}
+                                    onChange={(e) => 
+                                        handleChange(key as keyof TemplateStringsArray, e.target.value)
+                                    }
+                                />
                             </div>
+                        );
+
+                    case "number":
+                        return (
+                            <
                         )
                 }
             })}
